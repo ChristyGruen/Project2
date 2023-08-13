@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-//bring in uuid
 
 class User extends Model {}
 
@@ -12,7 +12,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,7 +30,32 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [1],
+      },
+    },
+  },
+  {
+    hooks: {
+      beforeCreate: async (newUser) => {
+        try {
+          newUser.password = await bcrypt.hash(newUser.password, 10);
+          return newUser;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
+      },
+      beforeUpdate: async (updatedUser) => {
+        try {
+          updatedUser.password = await bcrypt.hash(
+            updatedUser.password,
+            10
+          );
+          return updatedUser;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
     },
   },
@@ -44,3 +69,10 @@ User.init(
 );
 
 module.exports = User;
+
+
+/* 
+template from 
+C:\Users\chris\Documents\bootcamp\class-lessons\13-ORM\01-Activities\22-Stu_One-to-One\Unsolved\models\Reader.js
+
+*/
