@@ -19,6 +19,18 @@ Question.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // answer: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    upVote: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    downVote: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -26,16 +38,7 @@ Question.init(
         model:'user',
         key:'id'
       }
-    },
-    qnaId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
-        model:'qna',
-        key: 'id'
-      }
     }
-    
   },
   {
     sequelize,

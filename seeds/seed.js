@@ -1,22 +1,15 @@
 const sequelize = require('../config/connection');
-const { Answer, QnA, Question, Tip, User, Vote } = require('../models');
+const { Answer, Question, Tip, User } = require('../models');
 
 const answerData = require('./answerData.json');
-const qnaData = require('./qnaData.json');
 const questionData = require('./questionData.json');
 const tipData = require('./tipData.json');
 const userData = require('./userData.json');
-const voteData = require('./voteData.json');
 
 const tipQuizDB = async () => {
   await sequelize.sync({ force: true });
 
-  const answers = await Answer.bulkCreate(answerData, {
-    individualHooks: false,
-    returning: true,
-  });
-
-  const qnas = await QnA.bulkCreate(qnaData, {
+  const users = await User.bulkCreate(userData, {
     individualHooks: false,
     returning: true,
   });
@@ -26,20 +19,15 @@ const tipQuizDB = async () => {
     returning: true,
   });
 
+  console.log(questions)
+
   const tips = await Tip.bulkCreate(tipData, {
     individualHooks: true,
     returning: true,
   });
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
 
-  const vote = await Vote.bulkCreate(voteData, {
-    individualHooks: false,
-    returning: true,
-  });
+  const answers = await Answer.bulkCreate(answerData);
 
   process.exit(0);
 };

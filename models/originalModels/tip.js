@@ -16,16 +16,8 @@ Tip.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
-    },
-    upVote: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    downVote: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     userId: {
       type: DataTypes.INTEGER,
@@ -35,7 +27,6 @@ Tip.init(
         key:'id'
       }
     }
-
     
   },
   {

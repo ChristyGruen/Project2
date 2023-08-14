@@ -1,62 +1,62 @@
 [
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "Styling web pages",
-    "userId":"6"
+    "questionId": 1
   },
   {
-    "topic": "HTML",
+    "correct": true,
     "content": "Creating and rendering templates",
-    "userId":"6"
+    "questionId": 1
   },
   {
-    "topic": "HTML",
-    "content":"Managing database connections",
-    "userId":"6"
+    "correct": false,
+    "content": "Managing database connections",
+    "questionId": 1
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "Animating user interfaces",
-    "userId":"6"
+    "questionId": 1
   },
   {
-    "topic": "HTML",
+    "correct": true,
     "content": "{{}}",
-    "userId":"6"
+    "questionId": 2
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "<<>>",
-    "userId":"6"
+    "questionId": 2
   },
   {
-    "topic": "HTML",
-    "content":"[[]]",
-    "userId":"6"
+    "correct": false,
+    "content": "[[]]",
+    "questionId": 2
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "<%%>",
-    "userId":"6"
+    "questionId": 2
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "It defines a conditional statement",
-    "userId":"6"
+    "questionId": 3
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "It includes an external JavaScript file",
-    "userId":"6"
+    "questionId": 3
   },
   {
-    "topic": "HTML",
-    "content":"It iterates over an array and renders the template block for each ",
-    "userId":"6"
+    "correct": true,
+    "content": "It iterates over an array and renders the template block for each ",
+    "questionId": 3
   },
   {
-    "topic": "HTML",
+    "correct": false,
     "content": "It defines a partial template for reuse",
-    "userId":"6"
+    "questionId": 3
   }
 ]

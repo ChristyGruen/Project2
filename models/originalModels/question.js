@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Tip extends Model {}
+class Question extends Model {}
 
-Tip.init(
+Question.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,16 +16,8 @@ Tip.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
-    },
-    upVote: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    downVote: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     userId: {
       type: DataTypes.INTEGER,
@@ -34,8 +26,15 @@ Tip.init(
         model:'user',
         key:'id'
       }
+    },
+    qnaId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references:{
+        model:'qna',
+        key: 'id'
+      }
     }
-
     
   },
   {
@@ -43,11 +42,11 @@ Tip.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'tip',
+    modelName: 'question',
   }
 );
 
-module.exports = Tip;
+module.exports = Question;
 
 
 /* 

@@ -1,0 +1,20 @@
+[
+  {
+    "topic": "HTML",
+    "content":"what is Handlebars.js primarily used for? - Austin 10Aug",
+    "userId":"6", 
+    "qnaId":"tip"
+  },
+  {
+    "topic": "HTML",
+    "content":"Which of the following tags in Handlebars is used to interpolate a variable value into a template? - Austin 10Aug",
+    "userId":"6", 
+    "qnaId":"tip"
+  },
+  {
+    "topic": "HTML",
+    "content":"In Handlebars, what does the {{#each}} block helper do?  - Austin 10Aug",
+    "userId":"6", 
+    "qnaId":"tip"
+  }
+]
