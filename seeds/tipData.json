@@ -1,0 +1,25 @@
+[
+  {
+    "topic": "HTML",
+    "content":"'When you type an opening HTML tag (e.g. <b>, <p>), always place the corresponding closing tag at the end.' - https://www.elated.com/10-html-tips-for-beginners/ ",
+    "userId":1,
+      "upVote": 8,
+      "downVote": 2
+  
+  },
+  {
+    "topic": "JavaScript",
+    "content":"'A common error in JavaScript programs is to use an object when an array is required or an array when an object is required. The rule is simple: when the property names are small sequential integers, you should use an array. Otherwise, use an object.' — Douglas Crockford",
+    "userId":2,
+      "upVote": 8,
+      "downVote": 2
+  
+  },
+  {
+    "topic": "JavaScript",
+    "content":"Always comment your code so you can better understand it when you come back to it months later",
+    "userId":3,
+      "upVote": 8,
+      "downVote": 2
+  }
+]

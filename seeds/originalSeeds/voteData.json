@@ -1,0 +1,36 @@
+[{
+  "upVote": "2",
+  "downVote": "0",
+  "tipsId": "",
+  "questionsId":"1"
+},
+{
+  "upVote": "8",
+  "downVote": "2",
+  "tipsId": "",
+  "questionsId":"2"
+},
+{
+  "upVote": "3",
+  "downVote": "5",
+  "tipsId": "",
+  "questionsId":"3"
+},
+{
+  "upVote": "2",
+  "downVote": "0",
+  "tipsId": "1",
+  "questionsId":""
+},
+{
+  "upVote": "8",
+  "downVote": "2",
+  "tipsId": "2",
+  "questionsId":""
+},
+{
+  "upVote": "3",
+  "downVote": "5",
+  "tipsId": "3",
+  "questionsId":""
+}]

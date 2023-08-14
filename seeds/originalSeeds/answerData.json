@@ -1,0 +1,62 @@
+[
+  {
+    "topic": "HTML",
+    "content": "Styling web pages",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "Creating and rendering templates",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content":"Managing database connections",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "Animating user interfaces",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "{{}}",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "<<>>",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content":"[[]]",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "<%%>",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "It defines a conditional statement",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "It includes an external JavaScript file",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content":"It iterates over an array and renders the template block for each ",
+    "userId":"6"
+  },
+  {
+    "topic": "HTML",
+    "content": "It defines a partial template for reuse",
+    "userId":"6"
+  }
+]

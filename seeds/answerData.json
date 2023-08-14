@@ -1,0 +1,62 @@
+[
+  {
+    "correct": false,
+    "content": "Styling web pages",
+    "questionId": 1
+  },
+  {
+    "correct": true,
+    "content": "Creating and rendering templates",
+    "questionId": 1
+  },
+  {
+    "correct": false,
+    "content": "Managing database connections",
+    "questionId": 1
+  },
+  {
+    "correct": false,
+    "content": "Animating user interfaces",
+    "questionId": 1
+  },
+  {
+    "correct": true,
+    "content": "{{}}",
+    "questionId": 2
+  },
+  {
+    "correct": false,
+    "content": "<<>>",
+    "questionId": 2
+  },
+  {
+    "correct": false,
+    "content": "[[]]",
+    "questionId": 2
+  },
+  {
+    "correct": false,
+    "content": "<%%>",
+    "questionId": 2
+  },
+  {
+    "correct": false,
+    "content": "It defines a conditional statement",
+    "questionId": 3
+  },
+  {
+    "correct": false,
+    "content": "It includes an external JavaScript file",
+    "questionId": 3
+  },
+  {
+    "correct": true,
+    "content": "It iterates over an array and renders the template block for each ",
+    "questionId": 3
+  },
+  {
+    "correct": false,
+    "content": "It defines a partial template for reuse",
+    "questionId": 3
+  }
+]

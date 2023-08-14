@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Answer extends Model {}
+class Question extends Model {}
 
-Answer.init(
+Question.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,33 +11,45 @@ Answer.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    topic:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    correct: {
-      type: DataTypes.BOOLEAN
+    // answer: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    upVote: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
-    questionId: {
+    downVote: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references:{
-        model:'question',
+        model:'user',
         key:'id'
       }
-    },
-    
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'answer',
+    modelName: 'question',
   }
 );
 
-module.exports = Answer;
+module.exports = Question;
 
 
 /* 

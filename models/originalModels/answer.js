@@ -11,18 +11,20 @@ Answer.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    topic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    correct: {
-      type: DataTypes.BOOLEAN
-    },
-    questionId: {
+
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references:{
-        model:'question',
+        model:'user',
         key:'id'
       }
     },
