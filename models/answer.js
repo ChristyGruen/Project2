@@ -32,7 +32,7 @@ Answer.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: 'answer',
   }
 );
