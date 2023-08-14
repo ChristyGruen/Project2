@@ -1,0 +1,65 @@
+{{!-- based on MVC mini project profile.handlebars --}}
+<div class="row">
+    <div class="col-auto">
+        <h2>Welcome back, {{name}}</h2>   
+    </div>
+</div>
+
+<div>
+    <h3>Create a New Question:</h3>
+        <div class="col">
+    <form class="form new-question">
+        {{!-- <div class="form-group">
+            <label for="question-topic">Question Topic:</label>
+            <input class="form-input" type="radio" id="question-topic" name="question-topic"/>
+        </div> --}}
+        <p>What topic is your question about?</p>
+        <input type="radio" id="question-topic-1" name="question-topic" value="HTML">
+        <label for="html">HTML</label><br>
+        <input type="radio" id="question-topic-2" name="question-topic" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="question-topic-3" name="question-topic" value="JavaScript">
+        <label for="js">JavaScript</label><br>
+        <div class="form-group">
+            <label for="question-name">What is the question?</label>
+            <input class="form-input" type="text" id="question-name" name="question-name"/>
+        </div>
+        <div class="form-group">
+            <label for="answer-correct">What is the correct answer?</label>
+            <input class="form-input" type="text" id="answer-correct" name="answer-correct"/>
+        </div>
+        <div class="form-group">
+            <label for="answer-incorrect-1">What is one incorrect answer?</label>
+            <input class="form-input" type="text" id="answer=incorrect-1" name="answer-incorrect-1"/>
+        </div>
+        <div class="form-group">
+            <label for="answer-incorrect-2">What is one incorrect answer?</label>
+            <input class="form-input" type="text" id="answer=incorrect-2" name="answer-incorrect-2"/>
+        </div><div class="form-group">
+            <label for="answer-incorrect-3">What is one incorrect answer?</label>
+            <input class="form-input" type="text" id="answer=incorrect-3" name="answer-incorrect-3"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-create">Create</button>
+        </div>
+    </form>
+</div>
+
+{{!-- use project.js in mini project as a model for creating db questions --}}
+{{#if questions.length}}
+<div class="col question-list">
+    <h3>Questions you submitted:</h3>
+
+    {{#each questions as |question|}}
+    <div class="row">
+        <div class="col">
+            <h4><a href="/question/{{question.id}}">{{question.name}}</a></h4>
+        </div>
+        <div class="col">
+            <button class="btn btn-delete" data-id="{{question.id}}">DELETE</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+</div>
