@@ -14,6 +14,8 @@ const tipQuizDB = async () => {
     returning: true,
   });
 
+  console.log(users)
+
   const questions = await Question.bulkCreate(questionData, {
     individualHooks: false,
     returning: true,
@@ -26,8 +28,14 @@ const tipQuizDB = async () => {
     returning: true,
   });
 
+  console.log(tips)
 
-  const answers = await Answer.bulkCreate(answerData);
+  const answers = await Answer.bulkCreate(answerData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  console.log(answers)
 
   process.exit(0);
 };
