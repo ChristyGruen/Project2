@@ -1,20 +1,54 @@
-
+{{!-- tried to reformat similar to our question.handlebars file --}}
+<div class='row'>
+    <div class='col-auto'>
+        <h2>Welcome back, {{userName}}</h2>   
+    </div>
+</div>
 
 <div>
-  <h3>Enter your coding tip below:</h3>
+  <h3>Creating a New Tip:</h3>
 
-  <div class="col">
-    <form class="form new-tip">
-      <p>Please enter the title of your tip here:</p>
+  <div class='col'>
+    <form class='form new-tip'>
       
+         <label for='topic'>What topic does your tip cover? Select from the drop down:</label>
+        <select id='topic' name='topic'>
+            <option value='HTML'>HTML</option>
+            <option value='CSS'>CSS</option>
+            <option value='JavaScript'>JavaScript</option>
+            <option value='Other'>Other</option>
+        </select>
 
-      <div class="form-group">
-            <button type="submit" class="btn btn-create">Create</button>
+      <div class='form-group'>
+            <label for='tip-name'>Please enter the title of your new tip here:</label>
+            <input class='form-input' type='text' id='tip-content' name='tip-content'/>
+      </div>
+
+      <div class='form-group'>
+            <label for='content'>Enter the content of your new tip here:</label>
+            <input class='form-input' type='text' id='tip-content' name='tip-content'/>
+      </div>
+
+      <div class='form-group'>
+            <button type='submit' class='btn btn-create'>Create</button>
       </div>
     </form>
 </div>
 
+{{#if tips.length}}
+<div class='col tips'></div>
+  <h3>Tips you have submitted</h3>
+  {{#each tips as |tip|}}
+  <div class='row'>
+    <div class='col'>
+      <h4><a ref='/tips/{{tip.id}}.'>{{tip.content}}</a> </h4>
+    </div>
 
-
-
+    <div class="col">
+      <button class="btn btn-delete" data-id="{{tip.id}}">DELETE</button>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
 </div>
