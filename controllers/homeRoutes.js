@@ -1,29 +1,62 @@
 const router = require('express').Router();
-const store = require('../db/store');
+const { Post, Comment, User } = require('../models/');
 
-// GET "/api/notes" responds with all notes from the database
-router.get('/notes', (req, res) => {
-  store
-    .getNotes()
-    .then((notes) => {
-      return res.json(notes);
-    })
-    .catch((err) => res.status(500).json(err));
+// get all posts for homepage
+router.get('/', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [User],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('all-posts', { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.post('/notes', (req, res) => {
-  store
-    .addNote(req.body)
-    .then((note) => res.json(note))
-    .catch((err) => res.status(500).json(err));
+// get single post
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+
+      res.render('single-post', { post });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// DELETE "/api/notes" deletes the note with an id equal to req.params.id
-router.delete('/notes/:id', (req, res) => {
-  store
-    .removeNote(req.params.id)
-    .then(() => res.json({ ok: true }))
-    .catch((err) => res.status(500).json(err));
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;
