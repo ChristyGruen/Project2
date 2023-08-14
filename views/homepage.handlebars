@@ -5,11 +5,21 @@
 <div class="row mb-4 tip">
   <div class="row md-5">
     <h2>
-      <a href="/tip/{{tip.id}}">{{tip.topic}} {{tip.content}}</a>
+      <a href="/tip/{{tip.id}}">`{{tip.topic}}<br>{{tip.content}}<br>{{tip.user.userName}}<br>Up Votes {{tip.upVote}} DownVotes {{tip.downVote}} `</a>
     </h2>
   </div>
 </div>
 {{/each}}
+
+<h2>One Coding Tip</h2>
+<div class="row mb-4 tip">
+  <div class="row md-5">
+    <h2>
+      <a href="/tip/{{oneTip.id}}">`{{oneTip.topic}}<br>{{oneTip.content}}<br>{{oneTip.user.userName}}<br>Up Votes {{oneTip.upVote}} DownVotes {{oneTip.downVote}} `</a>
+    </h2>
+  </div>
+</div>
+
 
 <h2>Questions</h2>
 {{#each questions as |question| }}
@@ -21,7 +31,7 @@
     <p>
       {{answer.content}}
     </p>
-    {{!-- <p>Created by {{user.userName}} on {{format_date question.date_created}}</p> --}}
+    <p>Created by {{user.userName}} on {{format_date question.date_created}}</p>
   </div>
   <div class="col-md-7">
   </div>
