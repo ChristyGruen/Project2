@@ -1,10 +1,21 @@
 {{!-- We need to make this our own; from MVC mini project --}}
 <!-- Loop over each object in the projects array -->
+<h2>Coding Tips</h2>
+{{#each tips as |tip|}}
+<div class="row mb-4 tip">
+  <div class="row md-5">
+    <h2>
+      <a href="/tip/{{tip.id}}">{{tip.topic}} {{tip.content}}</a>
+    </h2>
+  </div>
+</div>
+
+<h2>Quizzes</h2>
 {{#each questions as |question| }}
-<div class="row mb-4 project">
+<div class="row mb-4 question">
   <div class="col-md-5">
     <h2>
-      <a href="/project/{{question.id}}">{{question.content}} {{question.topic}}</a>
+      <a href="/question/{{question.id}}">{{question.content}} {{question.topic}}</a>
     </h2>
     <p>
       {{answer.content}}
