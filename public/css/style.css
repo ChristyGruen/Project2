@@ -39,3 +39,17 @@ nav {
   font-size: 20px;
   padding-left: 20px;
 }
+
+.form-input {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: white;
+  color: black;
+  margin: 20px;
+}
+
+.btn-create {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: white;
+  color: black;
+  margin: 20px;
+}

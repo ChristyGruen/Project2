@@ -6,7 +6,7 @@ const questionRoutes = require("./questionRoutes");
 //const projectRoutes = require('./projectRoutes');
 
 router.use("/signup", userRoutes);
-router.use("questions", questionRoutes);
+router.use("/question", questionRoutes);
 //router.use('/projects', projectRoutes);
 
 module.exports = router;
