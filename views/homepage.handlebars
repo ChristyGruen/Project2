@@ -26,11 +26,16 @@
 <div class="row mb-4 question">
   <div class="col-md-5">
     <h2>
-      <a href="/question/{{question.id}}">`{{question.topic}}<br>{{question.content}}<br>{{question.user.userName}}<br>Up Votes {{question.upVote}} DownVotes {{question.downVote}} `</a>
+      <a href="/question/{{question.id}}">`{{question.topic}}
+      <h3>{{question.content}}</h3>
+      <ul>
+      {{#each question.answers as |answer|}}
+      <li>{{answer.content}}</li>
+      {{/each}}
+      </ul>
+      <br>{{question.user.userName}}
+      <br>Up Votes {{question.upVote}} DownVotes {{question.downVote}} `</a>
     </h2>
-    <p>
-      {{answer.content}}
-    </p>
     <p>Created by {{user.userName}}
        {{!-- on {{format_date question.date_created}} --}}
        </p>
@@ -44,7 +49,15 @@
 <div class="row mb-4 tip">
   <div class="row md-5">
     <h2>
-      <a href="/question/{{oneQuestion.id}}">`{{oneQuestion.topic}}<br>{{oneQuestion.content}}<br>{{oneQuestion.user.userName}}<br>Up Votes {{oneQuestion.upVote}} DownVotes {{oneQuestion.downVote}} `</a>
+      <a href="/question/{{oneQuestion.id}}">`{{oneQuestion.topic}}
+      <br>{{oneQuestion.content}}
+      <ul>
+      {{#each oneQuestion.answers as |answer|}}
+      <li>{{answer.content}}</li>
+      {{/each}}
+      </ul>
+      <br>{{oneQuestion.user.userName}}
+      <br>Up Votes {{oneQuestion.upVote}} DownVotes {{oneQuestion.downVote}} `</a>
     </h2>
   </div>
 </div>
