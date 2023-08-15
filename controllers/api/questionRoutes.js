@@ -1,6 +1,31 @@
 const router = require("express").Router();
-const { Question } = require("../../models");
+const { Question, Answer, User } = require("../../models");
 const withAuth = require("../../utils/auth");
+
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const questionData = await Question.findAll({
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Answer,
+        },
+      ],
+    });
+    const questions = questionData.map((question) =>
+      question.get({ plain: true })
+    );
+
+    res.render("question", {
+      questions,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/", withAuth, async (req, res) => {
   try {
