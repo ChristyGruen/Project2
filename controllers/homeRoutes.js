@@ -66,7 +66,7 @@ router.get("/question/:id", async (req, res) => {
           model: User,
           attributes: ["userName"],
         },
-        { model: Answer, attributes: [] },
+        { model: Answer, attributes: ['content'] },
       ],
     });
 
