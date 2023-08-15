@@ -19,10 +19,6 @@ Question.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // answer: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    // },
     upVote: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -42,9 +38,9 @@ Question.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: 'question',
   }
 );
