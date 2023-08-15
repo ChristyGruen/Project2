@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Tip, Question, Answer, User } = require('../models/');
 
 // get all posts for homepage
+
 router.get('/', async (req, res) => {
   console.log('made it this far')
     try {
