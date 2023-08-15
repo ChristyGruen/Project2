@@ -21,7 +21,7 @@
 </div>
 
 
-<h2>Questions</h2>
+<h2>Coding Questions</h2>
 {{#each questions as |question| }}
 <div class="row mb-4 question">
   <div class="col-md-5">
@@ -39,3 +39,12 @@
   </div>
 </div>
 {{/each}}
+
+<h2>One Coding Question</h2>
+<div class="row mb-4 tip">
+  <div class="row md-5">
+    <h2>
+      <a href="/question/{{oneQuestion.id}}">`{{oneQuestion.topic}}<br>{{oneQuestion.content}}<br>{{oneQuestion.user.userName}}<br>Up Votes {{oneQuestion.upVote}} DownVotes {{oneQuestion.downVote}} `</a>
+    </h2>
+  </div>
+</div>
