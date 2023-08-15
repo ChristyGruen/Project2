@@ -1,63 +1,91 @@
 {{!-- We need to make this our own; from MVC mini project --}}
 <!-- Loop over each object in the projects array -->
-<h2>Coding Tips</h2>
-{{#each tips as |tip|}}
-<div class="row mb-4 tip">
-  <div class="row md-5">
-    <h2>
-      <a href="/tip/{{tip.id}}">`{{tip.topic}}<br>{{tip.content}}<br>{{tip.user.userName}}<br>Up Votes {{tip.upVote}} DownVotes {{tip.downVote}} `</a>
-    </h2>
+
+<div class = 'row'>
+  <div class="col-md-6">
+    <h2>Coding Questions</h2>
+    {{#each questions as |question| }}
+    <h3>
+        <ul class="list-unstyled">
+          <li>{{question.topic}}</li>
+          <li style="font-size: small">{{question.content}}
+            <ul class = 'unicorn'>
+              {{#each question.answers as |answer|}}
+              <li>{{answer.content}}</li>
+              {{/each}}
+            </ul>
+          </li>
+          <li style = 'font-size: medium'>{{question.user.userName}}</li>
+          <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{question.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{question.downVote}}</strong></li>
+        </ul>
+    {{/each}}
   </div>
-</div>
-{{/each}}
-
-<h2>One Coding Tip</h2>
-<div class="row mb-4 tip">
-  <div class="row md-5">
-    <h2>
-      <a href="/tip/{{oneTip.id}}">`{{oneTip.topic}}<br>{{oneTip.content}}<br>{{oneTip.user.userName}}<br>Up Votes {{oneTip.upVote}} DownVotes {{oneTip.downVote}} `</a>
-    </h2>
-  </div>
-</div>
-
-
-<h2>Coding Questions</h2>
-{{#each questions as |question| }}
-<div class="row mb-4 question">
-  <div class="col-md-5">
-    <h2>
-      <a href="/question/{{question.id}}">`{{question.topic}}
-      <h3>{{question.content}}</h3>
-      <ul>
-      {{#each question.answers as |answer|}}
-      <li>{{answer.content}}</li>
+  <div class="col-md-6">
+    <h2>Coding Tips</h2>
+      {{#each tips as |tip|}}
+        <h3>
+          <ul class="list-unstyled">
+            <li>{{tip.topic}}</li>
+            <li style = 'font-size:small'>{{tip.content}}</li>
+            <li style = 'font-size:medium'>{{tip.user.userName}}</li>
+            <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{tip.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{tip.downVote}}</strong></li>
+          </ul>
+          {{!-- this is to create a link to the tipID, 
+          <a href="/tip/{{tip.id}}">{{tip.topic}}
+            <br>{{tip.content}}
+            <br>{{tip.user.userName}}
+            <br>Up Votes {{tip.upVote}} ::: DownVotes {{tip.downVote}} 
+          </a> --}}
+        </h3>
       {{/each}}
-      </ul>
-      <br>{{question.user.userName}}
-      <br>Up Votes {{question.upVote}} DownVotes {{question.downVote}} `</a>
-    </h2>
-    <p>Created by {{user.userName}}
-       {{!-- on {{format_date question.date_created}} --}}
-       </p>
-  </div>
-  <div class="col-md-7">
   </div>
 </div>
-{{/each}}
 
-<h2>One Coding Question</h2>
-<div class="row mb-4 tip">
-  <div class="row md-5">
-    <h2>
-      <a href="/question/{{oneQuestion.id}}">`{{oneQuestion.topic}}
-      <br>{{oneQuestion.content}}
-      <ul>
-      {{#each oneQuestion.answers as |answer|}}
-      <li>{{answer.content}}</li>
-      {{/each}}
-      </ul>
-      <br>{{oneQuestion.user.userName}}
-      <br>Up Votes {{oneQuestion.upVote}} DownVotes {{oneQuestion.downVote}} `</a>
-    </h2>
+<div class='row'> 
+  <div class="col-md-6">
+    <h2>One Coding Question</h2>
+    <h3>
+        <ul class="list-unstyled">
+          <li>{{oneQuestion.topic}}</li>
+          <li style="font-size: small">{{oneQuestion.content}}
+            <ul class = 'unicorn'>
+              {{#each oneQuestion.answers as |answer|}}
+              <li>{{answer.content}}</li>
+              {{/each}}
+            </ul>
+          </li>
+          <li style = 'font-size: medium'>{{oneQuestion.user.userName}}</li>
+          <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{oneQuestion.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{oneQuestion.downVote}}</strong></li>
+        </ul>
+{{!-- 
+      <a href="/question/{{oneQuestion.id}}">{{oneQuestion.topic}}
+        <br>{{oneQuestion.content}}
+          <ul>
+          {{#each oneQuestion.answers as |answer|}}
+          <li>{{answer.content}}</li>
+          {{/each}}
+          </ul>
+        <br>{{oneQuestion.user.userName}}
+        <br>Up Votes {{oneQuestion.upVote}} ::: DownVotes {{oneQuestion.downVote}}
+      </a> --}}
+    </h3>
+  </div>
+    <div class="col-md-6">
+    <h2>One Coding Tip</h2>
+        <h3>
+          <ul class="list-unstyled">
+            <li>{{oneTip.topic}}</li>
+            <li style = 'font-size:small'>{{oneTip.content}}</li>
+            <li style = 'font-size:medium'>{{oneTip.user.userName}}</li>
+            <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{oneTip.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{oneTip.downVote}}</strong></li>
+          </ul>
+        </h3>
+      {{!-- <h3>
+        <a class="unicorn" href="/tip/{{oneTip.id}}">{{oneTip.topic}}
+          <br>{{oneTip.content}}
+          <br>{{oneTip.user.userName}}
+          <br>Up Votes {{oneTip.upVote}} ::: DownVotes {{oneTip.downVote}} 
+        </a>
+      </h3> --}}
   </div>
 </div>
