@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="question-content" style="color: white">What is the question?</label>
-            <input class="form-input" type="text" id="question-content" name="question-content"/>
+            <textarea class="form-input" id="question-content" name="question-content"></textarea>
         </div>
         <div class="form-group">
             <label for="answer-1">Answer option #1:</label>
@@ -73,7 +73,7 @@
     {{#each questions as |question|}}
         <div class="row">
             <div class="col">
-                <h4><a href="/question/{{question.id}}">{{question.content}}</a></h4>
+                <h4><a href="/question/{{question.id}}" style="color: white">{{question.content}}</a></h4>
             </div>
             {{!-- <div class="col">
                 <button class="btn btn-delete" data-id="{{question.id}}">DELETE</button>

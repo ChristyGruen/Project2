@@ -37,6 +37,23 @@ router.get(
   }
 );
 
+router.post("/", async (req, res) => {
+  try {
+    const newQuestion = await Question.create({
+      ...req.body,
+      // topic: req.session.topic,
+      // content: req.session.content,
+      // upVote: req.session.upVote,
+      // downVote: req.session.downVote,
+      userId: req.session.userId,
+    });
+
+    res.status(200).json(newQuestion);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // router.post("/", withAuth, async (req, res) => {
 //   try {
 //     const newQuestion = await Question.create({
