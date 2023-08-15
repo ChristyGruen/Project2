@@ -27,35 +27,18 @@ router.get('/', async (req, res) => {
 
 });
 
-// // get single tip
-router.get('/tip/:id', async (req, res) => {
-  
-  try {
-  const tipData = await Tip.findByPk(req.params.id,{
-    include: [{
-      model:User,
-      attributes:['userName'],},],
-  });
+    const tips = tipData.map((tippy) => tippy.get({ plain: true }));
+    console.log(tips)
 
-  const oneTip = tipData.get({plain:true});
-  console.log(oneTip)
+    // res.render('all-tips', { tips });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 
-  res.render('homepage', {oneTip});
-} catch (err) {
-  res.status(500).json(err);
-}
-});
-
-
-// // get all questions
-// router.get('/', async (req, res) => {
-  
-//   try {
-//   const questionData = await Question.findAll({
-//     include: [{
-//       model:User,
-//       attributes:['userName'],},],
-//   });
+  // try {
+  //   const postData = await Post.findAll({
+  //     include: [User],
+  //   });
 
 //   const questions = questionData.map((questiony) => questiony.get({ plain: true }));
 //   console.log(questions)
