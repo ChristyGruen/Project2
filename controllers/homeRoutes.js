@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../models/');
+const { tip, Comment, User } = require('../models/');
 
 // get all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll({
+    const postData = await tip.findAll({
       include: [User],
     });
 
