@@ -3,35 +3,33 @@ const { Tip, Question, Answer, User } = require('../models/');
 
 // get all tips for homepage
 router.get('/', async (req, res) => {
-  
+    let tips, questions
+
     try {
-    const tipData = await Tip.findAll({
-      include: [{
-        model:User,
-        attributes:['userName'],},],
-    });
-
-    const tips = tipData.map((tippy) => tippy.get({ plain: true }));
-    console.log(tips)
-
-    res.render('homepage', { tips });
-
-    ///add
-      try {
-       const questionData = await Question.findAll({
-         include: [{
+      const tipData = await Tip.findAll({
+        include: [{
           model:User,
           attributes:['userName'],},],
-       });
+      });
+      tips = tipData.map((tippy) => tippy.get({ plain: true }));
+    } catch( ){
 
-      const questions = questionData.map((questiony) => questiony.get({ plain: true }));
-      console.log(questions)
+    }
 
-      res.render('homepage', { questions });
-    ///end add
-  } catch (err) {
-    res.status(500).json(err);
-  }
+    try {
+      const questionData = await Question.findAll({
+        include: [{
+        model:User,
+        attributes:['userName'],},]
+      });
+      questions = questionData.map((questiony) => questiony.get({ plain: true }));
+    } catch(){
+
+    }
+
+
+    res.render('homepage', { tips, questions });
+
 });
 
 // // get single tip
