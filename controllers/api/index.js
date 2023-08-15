@@ -6,5 +6,7 @@ const userRoutes = require("./userRoutes");
 
 router.use("/signup", userRoutes);
 //router.use("/projects", projectRoutes);
+router.use("/api/tip", userRoutes);
+
 
 module.exports = router;
