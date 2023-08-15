@@ -1,20 +1,21 @@
-const router = require('express').Router();
-const { Tip, Question, Answer, User } = require('../models/');
+const router = require("express").Router();
+const { Tip, Question, Answer, User } = require("../models/");
 
 // get all posts for homepage
 
-router.get('/', async (req, res) => {
-  console.log('made it this far')
-    try {
+router.get("/", async (req, res) => {
+  console.log("made it this far");
+  try {
     const tipData = await Tip.findAll({
       include: [User],
     });
 
     const tips = tipData.map((tippy) => tippy.get({ plain: true }));
-    console.log(tips)
+    console.log("tips", tips);
 
-    // res.render('all-tips', { tips });
+    res.render("homepage", { tips });
   } catch (err) {
+    // send an error file so the user knows if something went wrong
     res.status(500).json(err);
   }
 

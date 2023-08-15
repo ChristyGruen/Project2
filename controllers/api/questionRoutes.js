@@ -1,15 +1,19 @@
 const router = require("express").Router();
-const { Tipsquiz } = require("../../models");
+const { Question } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, async (req, res) => {
   try {
-    const newTipsquiz = await Tipsquiz.create({
+    const newQuestion = await Question.create({
       ...req.body,
-      user_id: req.session.user_id,
+      // topic: req.session.topic,
+      // content: req.session.content,
+      // upVote: req.session.upVote,
+      // downVote: req.session.downVote,
+      userId: req.session.userId,
     });
 
-    res.status(200).json(newTipsquiz);
+    res.status(200).json(newQuestion);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -17,19 +21,19 @@ router.post("/", withAuth, async (req, res) => {
 
 router.delete("/:id", withAuth, async (req, res) => {
   try {
-    const tipsquizData = await Tipsquiz.destroy({
+    const questionData = await Question.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
     });
 
-    if (!tipsquizData) {
+    if (!questionData) {
       res.status(404).json({ message: "No question found with this id!" });
       return;
     }
 
-    res.status(200).json(tipsquizData);
+    res.status(200).json(questionData);
   } catch (err) {
     res.status(500).json(err);
   }
