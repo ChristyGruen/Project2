@@ -11,12 +11,31 @@ router.get('/', async (req, res) => {
     });
 
     const tips = tipData.map((tippy) => tippy.get({ plain: true }));
-    console.log(tips)
+    //console.log(tips)
 
     res.render('homepage', { tips });
   } catch (err) {
     res.status(500).json(err);
   }
+
+  router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
+  });
+  
 
   // try {
   //   const postData = await Post.findAll({
