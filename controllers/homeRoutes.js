@@ -12,21 +12,16 @@ router.get('/', async (req, res) => {
           attributes:['userName'],},],
       });
       tips = tipData.map((tippy) => tippy.get({ plain: true }));
-    } catch( ){
-
-    }
+    } catch(err ){res.status(500).json(err) }
 
     try {
       const questionData = await Question.findAll({
         include: [{
         model:User,
-        attributes:['userName'],},]
+        attributes:['userName'],},],
       });
       questions = questionData.map((questiony) => questiony.get({ plain: true }));
-    } catch(){
-
-    }
-
+    } catch(err ){res.status(500).json(err) }
 
     res.render('homepage', { tips, questions });
 
