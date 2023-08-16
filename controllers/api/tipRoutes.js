@@ -54,7 +54,7 @@ async (req, res) => {
     });
 
     if (!tipData) {
-      res.status(404).json({ message: "No tip found wit this id!" })
+      res.status(404).json({ message: "No tip found with this id!" })
       return;
     }
     res.status(200).json(tipData);

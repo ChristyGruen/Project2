@@ -4,11 +4,9 @@ const router = require("express").Router();
 const userRoutes = require("./userRoutes");
 const questionRoutes = require("./questionRoutes");
 const tipRoutes = require("./tipRoutes");
-//const projectRoutes = require('./projectRoutes');
 
 router.use("/signup", userRoutes);
 router.use("/question", questionRoutes);
-router.use("/tips", tipRoutes);
 //router.use('/projects', projectRoutes);
 
 module.exports = router;
