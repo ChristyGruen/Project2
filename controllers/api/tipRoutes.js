@@ -14,11 +14,11 @@ router.get("/", // withAuth,
         ],
       });
 
-      const Tips = tipData.map((tip) =>
+      const tips = tipData.map((tip) =>
         tip.get({ plain: true })
       );
       // katys note: home routes should use res.render(), api rout should use res.json()
-      res.json("tip", {
+      res.render("tips", {
         tips,
         // logged_in: req.session.logged_in,
       });
@@ -28,41 +28,42 @@ router.get("/", // withAuth,
   }
 );
 
+router.post("/", // withAuth,
+  async (req, res) => {
+    try {
+      const newTip = await Tip.create({
+        ...req.body,
+        user_id: req.session.user_id,
+      });
 
+      res.status(200).json(newTip);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
 
-// router.post("/", withAuth, async (req, res) => {
-//   try {
-//     const newTipsquiz = await Tipsquiz.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
-//     });
+router.delete("/:id", 
+// withAuth,
+async (req, res) => {
+  try {
+    const tipData = await Tip.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
 
-//     res.status(200).json(newTipsquiz);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+    if (!tipData) {
+      res.status(404).json({ message: "No tip found wit this id!" })
+      return;
+    }
+    res.status(200).json(tipData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-// router.delete("/:id", withAuth, async(req, res) => {
-//   try {
-//     const tipsquizData = await Tipsquiz.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
-
-//     if (!tipsquizData){
-//       res.status(404).json({message: "No tip found wit this id!"})
-//       return;
-//     }
-//     res.status(200).json(tipsquizData);
-//   }catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// module.exports = router;
+module.exports = router;
 
 
 
