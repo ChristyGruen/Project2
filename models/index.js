@@ -1,7 +1,7 @@
-const User = require('./user');
-const Answer = require('./answer');
-const Tip = require('./tip');
-const Question = require('./question');
+const User = require('./User');
+const Answer = require('./Answer');
+const Tip = require('./Tip');
+const Question = require('./Question');
 
 
 ////////////////User Tip
