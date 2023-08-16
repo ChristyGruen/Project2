@@ -5,25 +5,59 @@
 <div class="row mb-4 tip">
   <div class="row md-5">
     <h2>
-      <a href="/tip/{{tip.id}}">{{tip.topic}} {{tip.content}}</a>
+      <a href="/tip/{{tip.id}}">`{{tip.topic}}<br>{{tip.content}}<br>{{tip.user.userName}}<br>Up Votes {{tip.upVote}} DownVotes {{tip.downVote}} `</a>
     </h2>
   </div>
 </div>
 {{/each}}
 
-<h2>Questions</h2>
+<h2>One Coding Tip</h2>
+<div class="row mb-4 tip">
+  <div class="row md-5">
+    <h2>
+      <a href="/tip/{{oneTip.id}}">`{{oneTip.topic}}<br>{{oneTip.content}}<br>{{oneTip.user.userName}}<br>Up Votes {{oneTip.upVote}} DownVotes {{oneTip.downVote}} `</a>
+    </h2>
+  </div>
+</div>
+
+
+<h2>Coding Questions</h2>
 {{#each questions as |question| }}
 <div class="row mb-4 question">
   <div class="col-md-5">
     <h2>
-      <a href="/question/{{question.id}}">{{question.content}} {{question.topic}}</a>
+      <a href="/question/{{question.id}}">`{{question.topic}}
+      <h3>{{question.content}}</h3>
+      <ul>
+      {{#each question.answers as |answer|}}
+      <li>{{answer.content}}</li>
+      {{/each}}
+      </ul>
+      <br>{{question.user.userName}}
+      <br>Up Votes {{question.upVote}} DownVotes {{question.downVote}} `</a>
     </h2>
-    <p>
-      {{answer.content}}
-    </p>
-    {{!-- <p>Created by {{user.userName}} on {{format_date question.date_created}}</p> --}}
+    <p>Created by {{user.userName}}
+       {{!-- on {{format_date question.date_created}} --}}
+       </p>
   </div>
   <div class="col-md-7">
   </div>
 </div>
 {{/each}}
+
+<h2>One Coding Question</h2>
+<div class="row mb-4 tip">
+  <div class="row md-5">
+    <h2>
+      <a href="/question/{{oneQuestion.id}}">`{{oneQuestion.topic}}
+      <br>{{oneQuestion.content}}
+      <ul>
+      {{#each oneQuestion.answers as |answer|}}
+      <li>{{answer.content}}</li>
+      {{/each}}
+      </ul>
+      <br>{{oneQuestion.user.userName}}
+      <br>Up Votes {{oneQuestion.upVote}} DownVotes {{oneQuestion.downVote}} `</a>
+    </h2>
+  </div>
+</div>

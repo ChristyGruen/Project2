@@ -5,35 +5,28 @@
     </div>
 </div>
 
-<div>
+<div class="row mt-4">
+    <div class="col-md-6">
     <h3>Create a New Question:</h3>
-        <div class="col">
-    <form class="form new-question">
-        {{!-- <div class="form-group">
-            <label for="question-topic">Question Topic:</label>
-            <input class="form-input" type="radio" id="question-topic" name="question-topic"/>
-        </div> --}}
-        <label for="topic">What topic is your question about? Select from the drop down:</label>
-        <select id="topic" name="topic">
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Other">Other</option>
-        </select>
-        {{!-- <input type="radio" id="question-topic-1" name="question-topic" value="HTML">
-        <label for="html">HTML</label><br>
-        <input type="radio" id="question-topic-2" name="question-topic" value="CSS">
-        <label for="css">CSS</label><br>
-        <input type="radio" id="question-topic-3" name="question-topic" value="JavaScript">
-        <label for="js">JavaScript</label><br> --}}
+        
+    <form class="form new-question-form">
         <div class="form-group">
-            <label for="question-name">What is the question?</label>
-            <input class="form-input" type="text" id="question-content" name="question-content"/>
+            <label for="topic">What topic is your question about? Select from the drop down:</label>
+            <select id="topic" class="form-input"name="topic">
+                <option value="HTML" style="color: white">HTML</option>
+                <option value="CSS" style="color: white">CSS</option>
+                <option value="JavaScript" style="color: white">JavaScript</option>
+                <option value="Other" style="color: white">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="question-content" style="color: white">What is the question?</label>
+            <textarea class="form-input" id="question-content" name="question-content"></textarea>
         </div>
         <div class="form-group">
             <label for="answer-1">Answer option #1:</label>
             <input class="form-input" type="text" id="answer-1" name="answer-1"/>
-            <p>Is this answer correct?</p>
+            <p>Is this the correct answer?</p>
             <input type="radio" id="answer-1 correct" name="answer-1 correct" value="correct">
             <label for="correct">Yes</label><br>
             <input type="radio" id="answer-1 incorrect" name="answer-1 incorrect" value="incorrect">
@@ -78,15 +71,17 @@
     <h3>Questions you submitted:</h3>
 
     {{#each questions as |question|}}
-    <div class="row">
-        <div class="col">
-            <h4><a href="/question/{{question.id}}">{{question.content}}</a></h4>
+        <div class="row">
+            <div class="col">
+                <h4><a href="/question/{{question.id}}" style="color: white">{{question.content}}</a></h4>
+            </div>
+            {{!-- <div class="col">
+                <button class="btn btn-delete" data-id="{{question.id}}">DELETE</button>
+            </div> --}}
         </div>
-        <div class="col">
-            <button class="btn btn-delete" data-id="{{question.id}}">DELETE</button>
-        </div>
+        {{/each}}
     </div>
-    {{/each}}
+    {{/if}}
 </div>
-{{/if}}
-</div>
+
+<script src="./js/question.js"></script>
