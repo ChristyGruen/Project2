@@ -6,6 +6,6 @@ const userRoutes = require("./userRoutes");
 
 //router.use("/signup", userRoutes);
 router.use("/user", userRoutes);
-//router.use("/projects", projectRoutes);
+
 
 module.exports = router;
