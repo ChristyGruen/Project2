@@ -1,5 +1,5 @@
 const User = require('./User');
-const Answer = require('./Answer');
+const Answer = require('.Answer');
 const Tip = require('./Tip');
 const Question = require('./Question');
 
