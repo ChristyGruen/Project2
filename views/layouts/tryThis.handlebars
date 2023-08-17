@@ -1,0 +1,41 @@
+    <!-- Start of navbar -->
+    <!-- https://stackoverflow.com/questions/19827605/change-bootstrap-navbar-collapse-breakpoint-without-using-less -->
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid">
+        <!-- could use home button if I expand this into a multipage website -->
+        <!-- <a class="navbar-brand" href="index2.html">Home</a>-->
+        <a class="navbar-brand col-md-6 col-sm-12">Coding QTips -- Quizzes and Tips</a>
+        <button class="navbar-toggler borderwhite" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end navwhite" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            {{!-- <li class="nav-item dropdown">
+              <a class="navbar-links nav-link dropdown-toggle fontcolor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Portfolio
+              </a>
+              <ul class="dropdown-menu"> 
+                <li><a class="dropdown-item" href="https://christygruen.github.io/belly-button-challenge/" target="_blank">Interactive Dashboard</a></li>
+                <li><a class="dropdown-item" href="https://christygruen.github.io/Web-Design-Challenge/" target="_blank">Website - climate analysis</a></li>
+                <li><a class="dropdown-item" href="https://project-3-h7kg.onrender.com/" target="_blank">Collaborative website</a></li>
+                <li><a class="dropdown-item" href="https://public.tableau.com/app/profile/chrisg8135/viz/Citibike3_16763350730480/JCCitibike5yearReview?publish=yes" target="_blank">Tableau</a></li>
+                <!-- <li><a class="dropdown-item" href="visualizations/wind.html">Wind Speed</a></li> -->
+              </ul>
+            </li> --}}
+            <li class="nav-item">
+              <a class="navbar-links nav-link fontcolor" href="/api/question">add a Question</a>
+              </a>
+            </li>
+            <li class="nav-item list-inline-item">
+              <a class="navbar-links nav-link fontcolor" href="/api/tip">add a Tip</a>
+            </li>
+            <li class="nav-item list-inline-item">
+                  <a class="navbar-links nav-link fontcolor" href="/login">Login</a> 
+                  </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- End of navbar -->
