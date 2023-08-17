@@ -3,22 +3,31 @@ const newFormHandler = async (event) => {
 
   const topic = document.querySelector("#topic").value.trim();
   const content = document.querySelector("#question-content").value.trim();
-  const answer1 = document.querySelector("#answer1").value.trim();
-  const answer2 = document.querySelector("#answer2").value.trim();
-  const answer3 = document.querySelector("#answer3").value.trim();
-  const answer4 = document.querySelector("#answer4").value.trim();
+  const answer1 = document.querySelector("#answer-1").value.trim();
+  const answer2 = document.querySelector("#answer-2").value.trim();
+  const answer3 = document.querySelector("#answer-3").value.trim();
+  const answer4 = document.querySelector("#answer-4").value.trim();
 
-  if (topic && content && answer1 && answer2 && answer3 && answer4) {
+  const answerInput1 = document.querySelector("#answer-input-1").value.trim();
+  const answerInput2 = document.querySelector("#answer-input-2").value.trim();
+  const answerInput3 = document.querySelector("#answer-input-3").value.trim();
+  const answerInput4 = document.querySelector("#answer-input-4").value.trim();
+
+  console.log(topic);
+  console.log(content);
+  console.log(answer1);
+  console.log(answer2);
+  console.log(answer3);
+  console.log(answer4);
+  console.log(answerInput1);
+  console.log(answerInput2);
+  console.log(answerInput3);
+  console.log(answerInput4);
+
+  if (topic && content) {
     const response = await fetch(`/api/question`, {
       method: "POST",
-      body: JSON.stringify({
-        topic,
-        content,
-        answer1,
-        answer2,
-        answer3,
-        answer4,
-      }),
+      body: JSON.stringify({ topic, content }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,31 +36,11 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/question");
     } else {
-      alert("Failed to create project");
+      alert("Failed to create question");
     }
   }
 };
 
-//   const delButtonHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//       const id = event.target.getAttribute('data-id');
-
-//       const response = await fetch(`/api/projects/${id}`, {
-//         method: 'DELETE',
-//       });
-
-//       if (response.ok) {
-//         document.location.replace('/profile');
-//       } else {
-//         alert('Failed to delete project');
-//       }
-//     }
-//   };
-
 document
-  .querySelector(".form new-question-form")
+  .querySelector(".new-question-form")
   .addEventListener("submit", newFormHandler);
-
-//   document
-//     .querySelector('.project-list')
-//     .addEventListener('click', delButtonHandler);

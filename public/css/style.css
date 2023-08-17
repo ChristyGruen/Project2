@@ -10,7 +10,7 @@ main {
 h1 {
   font-family: "Orbitron", sans-serif;
   color: white;
-  font-size: 50px;
+  font-size: xx-large;
   text-align: left;
   padding-bottom: 30px;
   padding-top: 20px;
@@ -20,7 +20,23 @@ h1 {
 h2 {
   font-family: "Orbitron", sans-serif;
   color: white;
-  font-size: 30px;
+  font-size: x-large;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+h3 {
+  font-family: "Orbitron", sans-serif;
+  color: green;
+  font-size: medium;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+.unicorn {
+  font-family: "Orbitron", sans-serif;
+  color: pink;
+  font-size: x-small;
   padding: 5px;
   padding-left: 20px;
 }
@@ -42,7 +58,7 @@ p {
 nav {
   font-family: "Orbitron", sans-serif;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   padding: 20px 20px;
 }
 
@@ -84,4 +100,9 @@ button {
   display: flex;
   align-items: center;
   width: 600px;
+}
+
+.answer-input {
+  background-color: white;
+  color: black;
 }
