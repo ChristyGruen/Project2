@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Tip, Question, Answer, User } = require("../models");
+const withAuth = require("../utils/auth");
 
 // get all tips for homepage
 router.get("/", async (req, res) => {
@@ -105,7 +106,7 @@ router.get("/signup", (req, res) => {
 
 router.get(
   "/question",
-  // withAuth,
+  withAuth,
   async (req, res) => {
     try {
       const questionData = await Question.findAll({
@@ -128,16 +129,15 @@ router.get(
         question.get({ plain: true })
       );
 
-      res.render("question", {
-        questions,
-        //logged_in: req.session.logged_in,
-      });
+      res.render("question", { 
+        questions, loggedIn: req.session.loggedIn, });
     } catch (err) {
       res.status(500).json(err);
     }
   }
 );
 
+<<<<<<< HEAD
 
 ///////Tip Route/////////////////
 router.get("/tips", // withAuth,
@@ -167,3 +167,6 @@ router.get("/tips", // withAuth,
 
 
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 231ddf7764483e7a18b6ba0b22a7eff5ec00cbb3
