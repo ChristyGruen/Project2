@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Tip, Question, Answer, User } = require("../models");
-const withAuth = require("../utils/auth");
 
 // get all tips for homepage
 router.get("/", async (req, res) => {
@@ -59,27 +58,27 @@ router.get("/", async (req, res) => {
 //   }
 // });
 
-// // // get single Question
-// router.get("/question/:id", async (req, res) => {
-//   try {
-//     const questionData = await Question.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["userName"],
-//         },
-//         { model: Answer, attributes: ["content"] },
-//       ],
-//     });
+//get single Question -----
+router.get("/question/:id", async (req, res) => {
+  try {
+    const questionData = await Question.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["userName"],
+        },
+        { model: Answer, attributes: ["content"] },
+      ],
+    });
 
-//     const oneQuestion = questionData.get({ plain: true });
-//     console.log(oneQuestion);
+    const question = questionData.get({ plain: true });
+    console.log(question);
 
-//     res.render("homepage", { oneQuestion });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.render("singleQuestion", { question });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
@@ -104,37 +103,35 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get(
-  "/question",
-  withAuth,
-  async (req, res) => {
-    try {
-      const questionData = await Question.findAll({
-        include: [
-          {
-            model: User,
-            attributes: ["userName"],
-          },
-        ],
-        // include: [
-        //   {
-        //     model: User,
-        //   },
-        //   {
-        //     model: Answer,
-        //   },
-        // ],
-      });
-      const questions = questionData.map((question) =>
-        question.get({ plain: true })
-      );
+router.get("/question", withAuth, async (req, res) => {
+  try {
+    const questionData = await Question.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["userName"],
+        },
+      ],
+      // include: [
+      //   {
+      //     model: User,
+      //   },
+      //   {
+      //     model: Answer,
+      //   },
+      // ],
+    });
+    const questions = questionData.map((question) =>
+      question.get({ plain: true })
+    );
 
-      res.render("question", { 
-        questions, loggedIn: req.session.loggedIn, });
-    } catch (err) {
-      res.status(500).json(err);
-    }
+    res.render("question", {
+      questions,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
-);
+});
 
 module.exports = router;
