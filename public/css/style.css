@@ -80,3 +80,8 @@ nav {
   align-items: center;
   width: 600px;
 }
+
+.answer-input {
+  background-color: white;
+  color: black;
+}
