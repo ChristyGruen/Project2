@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Tip, Question, Answer, User } = require("../models");
+const withAuth = require("../utils/auth");
 
 // get all tips for homepage
 router.get("/", async (req, res) => {
@@ -14,15 +15,7 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-<<<<<<< HEAD
-
-    const tips = tipData.map((tippy) => tippy.get({ plain: true }));
-    //console.log(tips)
-
-    res.render('homepage', { tips , loggedIn});
-=======
     tips = tipData.map((tippy) => tippy.get({ plain: true }));
->>>>>>> ffd1bfac7a2af313433d974e78df42cae9cbfaf8
   } catch (err) {
     res.status(500).json(err);
   }
@@ -42,21 +35,6 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 
-<<<<<<< HEAD
-  router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('signup');
-  });
-  
-
-});
-
-module.exports = router;
-=======
   res.render("homepage", { tips, questions });
 });
 
@@ -128,7 +106,7 @@ router.get("/signup", (req, res) => {
 
 router.get(
   "/question",
-  // withAuth,
+  withAuth,
   async (req, res) => {
     try {
       const questionData = await Question.findAll({
@@ -151,10 +129,8 @@ router.get(
         question.get({ plain: true })
       );
 
-      res.render("question", {
-        questions,
-        //logged_in: req.session.logged_in,
-      });
+      res.render("question", { 
+        questions, loggedIn: req.session.loggedIn, });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -162,4 +138,3 @@ router.get(
 );
 
 module.exports = router;
->>>>>>> ffd1bfac7a2af313433d974e78df42cae9cbfaf8
