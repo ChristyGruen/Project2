@@ -33,7 +33,7 @@ async function addNewAnswers(answers, idOfQuestion) {
   }
 
   console.log(answersArr);
-  //const newAnswer = await Answer.bulkCreate(arrOfAnswers);
+  const newAnswer = await Answer.bulkCreate(arrOfAnswers);
   return { status: "success" };
 }
 
