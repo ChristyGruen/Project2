@@ -10,11 +10,11 @@ router.post("/", async (req, res) => {
   console.log("HELP!!!!!");
 
   try {
-    // const newQuestion = await Question.create({
-    //   ...req.body,
-    //   userId: req.session.userId,
-    //   //userId: req.session?.userId || 1,
-    // });
+    const newQuestion = await Question.create({
+      ...req.body,
+      userId: req.session.userId,
+      //userId: req.session?.userId || 1,
+    });
 
     console.log(req.body);
 
