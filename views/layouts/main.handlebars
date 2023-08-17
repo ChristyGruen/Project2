@@ -20,23 +20,31 @@
       {{#if logged_in}}
         <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
-              <a class="navbar-brand" href="/">Home</a>
-              <h1 class="navbar-brand col-md-6 col-sm-12">Coding QTips -- Quizzes and Tips</h1>
+              {{!-- <a class="navbar-brand" href="/">Home</a> --}}
+              <h1 class="navbar-brand col-md-7 col-sm-12" style = 'font-size: xx-large'>Coding QTips -- Quizzes and Tips</h1>
               <button class="navbar-toggler borderwhite" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse justify-content-end navwhite" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav col-md-5 col-sm-12">
+                    {{!--///   --}}
+                    <li class="nav-item">
+                    <a class="navbar-links nav-link fontcolor" href="/api/question">takeQuiz</a>
+                    </a>
+                  </li>
                   <li class="nav-item">
-                    <a class="navbar-links nav-link fontcolor" href="/api/question">add a Question</a>
+                    <a class="navbar-links nav-link fontcolor" href="/api/question">addQ</a>
                     </a>
                   </li>
                   <li class="nav-item list-inline-item">
-                    <a class="navbar-links nav-link fontcolor" href="/api/tip">add a Tip</a>
+                    <a class="navbar-links nav-link fontcolor" href="/api/tip">addTip</a>
+                  </li>
+                  {{!--///   --}}
+                      <li class="nav-item list-inline-item">
+                      <a class="navbar-links nav-link fontcolor" href="/">Home</a> 
                   </li>
                   <li class="nav-item list-inline-item">
-                        <a class="navbar-links nav-link fontcolor" href="/login">Login</a> 
-                        </a>
+                      <a class="navbar-links nav-link fontcolor" href="/logout">Logout</a> 
                   </li>
                 </ul>
               </div>
@@ -46,19 +54,25 @@
         <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
               {{!-- <a class="navbar-brand" href="/">Home</a> --}}
-              <h1 class="navbar-brand col-md-8 col-sm-12" style = 'font-size: xx-large'>Coding QTips -- Quizzes and Tips</h1>
+              <h1 class="navbar-brand col-md-7 col-sm-12" style = 'font-size: xx-large'>Coding QTips -- Quizzes and Tips</h1>
               <button class="navbar-toggler borderwhite" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse justify-content-end navwhite" id="navbarNavDropdown">
-                <ul class="navbar-nav col-md-4 col-sm-12">
-                  {{!-- <li class="nav-item">
-                    <a class="navbar-links nav-link fontcolor" href="/api/question">add a Question</a>
+                <ul class="navbar-nav col-md-5 col-sm-12">
+       
+                    {{!-- <li class="nav-item">
+                    <a class="navbar-links nav-link fontcolor" href="/api/question">takeQuiz</a>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-links nav-link fontcolor" href="/api/question">addQ</a>
                     </a>
                   </li>
                   <li class="nav-item list-inline-item">
-                    <a class="navbar-links nav-link fontcolor" href="/api/tip">add a Tip</a>
+                    <a class="navbar-links nav-link fontcolor" href="/api/tip">addTip</a>
                   </li> --}}
+            
                       <li class="nav-item list-inline-item">
                       <a class="navbar-links nav-link fontcolor" href="/">Home</a> 
                   </li>
