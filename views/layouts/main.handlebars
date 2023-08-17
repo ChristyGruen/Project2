@@ -60,6 +60,9 @@
               </button>
               <div class="collapse navbar-collapse justify-content-end navwhite" id="navbarNavDropdown">
                 <ul class="navbar-nav col-md-5 col-sm-12">
+                  <li class="nav-item list-inline-item">
+                      <a class="navbar-links nav-link fontcolor" href="/login">Login</a> 
+                  </li>
        
                     <li class="nav-item">
                     <a class="navbar-links nav-link fontcolor" href="/quiz">takeQuiz</a>
@@ -75,9 +78,6 @@
             
                       <li class="nav-item list-inline-item">
                       <a class="navbar-links nav-link fontcolor" href="/">Home</a> 
-                  </li>
-                  <li class="nav-item list-inline-item">
-                      <a class="navbar-links nav-link fontcolor" href="/login">Login</a> 
                   </li>
                 </ul>
               </div>
@@ -97,6 +97,12 @@
 
   <!-- Render script for logged in users only -->
   {{#if loggedIn}}
+  <script>
+        function log_console() {
+            console.log
+                (" LOGGED IN.");
+        }
+    </script>
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

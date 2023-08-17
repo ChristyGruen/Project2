@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Tip, Question, Answer, User } = require("../models");
-const withAuth = require("../utils/auth");
 
 // get all tips for homepage
 router.get("/", async (req, res) => {
