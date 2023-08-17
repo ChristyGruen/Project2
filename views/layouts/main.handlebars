@@ -20,10 +20,22 @@
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
+        {{#if loggedIn}}
+        <script>
+        function log_console() {
+            console.log
+                ("GeeksforGeeks is a portal for geeks.");
+        }
+    </script>
         <a href="/profile" style="color: white">Profile</a> |
         <button class="no-button" id="logout">Logout</button>
         {{else}}
+        <script>
+        function log_console() {
+            console.log
+                ("NOT LOGGED IN.");
+        }
+    </script>
         <a href="/login" style="color: white">Login</a>
         {{/if}}
       </nav>
@@ -38,7 +50,13 @@
   </div>
 
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{#if loggedIn}}
+  <script>
+        function log_console() {
+            console.log
+                (" LOGGED IN.");
+        }
+    </script>
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
