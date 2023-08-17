@@ -1,23 +1,9 @@
 const router = require("express").Router();
-const { Tip, Question, Answer, User } = require("../../models/");
+const { Tip, Question, Answer, User } = require("../../models");
 
-// get all tips for homepage
+// get all questions for createQuiz
 router.get("/", async (req, res) => {
-  let tips, questions;
-
-  try {
-    const tipData = await Tip.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["userName"],
-        },
-      ],
-    });
-    tips = tipData.map((tippy) => tippy.get({ plain: true }));
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  let questions;
 
   try {
     const questionData = await Question.findAll({
@@ -32,7 +18,7 @@ router.get("/", async (req, res) => {
     questions = questionData.map((questiony) => questiony.get({ plain: true }));
   } catch (err) { res.status(500).json(err) }
 
-  res.render('createQuiz', { tips, questions });
+  res.render('createQuiz', { questions });
 
 });
 
