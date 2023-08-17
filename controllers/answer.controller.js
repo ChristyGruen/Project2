@@ -1,20 +1,5 @@
 const { Answer } = require("../models");
 
-/*
-{
-  topic: 'HTML',
-  content: 'Question #1',
-  answer1: 'Correct answer',
-  answer2: 'a',
-  answer3: 'b',
-  answer4: 'c',
-  answerInput1: '1',
-  answerInput2: '1',
-  answerInput3: '1',
-  answerInput4: '1'
-}
-*/
-
 async function addNewAnswers(answers, idOfQuestion) {
   console.log(answers);
   let answersArr = [];
