@@ -103,6 +103,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+<<<<<<< HEAD
 router.get(
   "/question",
   // withAuth,
@@ -137,5 +138,7 @@ router.get(
     }
   }
 );
+=======
+>>>>>>> main
 
 module.exports = router;
