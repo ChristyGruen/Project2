@@ -3,7 +3,7 @@
 
 <div class = 'row'>
   <div class="col-md-6">
-    <h2>Build a Quiz</h2>
+    <h2>Vote on a Question</h2>
     {{#each questions as |question| }}
     <h3>
         <ul class="list-unstyled">
@@ -21,7 +21,7 @@
     {{/each}}
   </div>
   <div class="col-md-6">
-    <h2>Coding Tips</h2>
+    <h2>Vote on a Tip</h2>
       {{#each tips as |tip|}}
         <h3>
           <ul class="list-unstyled">
@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<div class='row'> 
+{{!-- <div class='row'> 
   <div class="col-md-6">
     <h2>One Coding Question</h2>
     <h3>
@@ -57,17 +57,6 @@
           <li style = 'font-size: medium'>{{oneQuestion.user.userName}}</li>
           <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{oneQuestion.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{oneQuestion.downVote}}</strong></li>
         </ul>
-{{!-- 
-      <a href="/question/{{oneQuestion.id}}">{{oneQuestion.topic}}
-        <br>{{oneQuestion.content}}
-          <ul>
-          {{#each oneQuestion.answers as |answer|}}
-          <li>{{answer.content}}</li>
-          {{/each}}
-          </ul>
-        <br>{{oneQuestion.user.userName}}
-        <br>Up Votes {{oneQuestion.upVote}} ::: DownVotes {{oneQuestion.downVote}}
-      </a> --}}
     </h3>
   </div>
     <div class="col-md-6">
@@ -80,12 +69,5 @@
             <li style = 'font-size: small'>Up Votes <strong style = 'font-size: medium'>{{oneTip.upVote}} </strong>::: Down Votes <strong style = 'font-size: medium'>{{oneTip.downVote}}</strong></li>
           </ul>
         </h3>
-      {{!-- <h3>
-        <a class="unicorn" href="/tip/{{oneTip.id}}">{{oneTip.topic}}
-          <br>{{oneTip.content}}
-          <br>{{oneTip.user.userName}}
-          <br>Up Votes {{oneTip.upVote}} ::: DownVotes {{oneTip.downVote}} 
-        </a>
-      </h3> --}}
   </div>
-</div>
+</div> --}}
