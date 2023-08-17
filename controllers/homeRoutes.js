@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const tips = tipData.map((tippy) => tippy.get({ plain: true }));
     console.log(tips)
 
-    // res.render('all-tips', { tips });
+    res.render('all-tips', { tips });
   } catch (err) {
     res.status(500).json(err);
   }
