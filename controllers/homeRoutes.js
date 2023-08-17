@@ -137,7 +137,6 @@ router.get(
   }
 );
 
-<<<<<<< HEAD
 
 ///////Tip Route/////////////////
 router.get("/tips", // withAuth,
@@ -167,6 +166,3 @@ router.get("/tips", // withAuth,
 
 
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> 231ddf7764483e7a18b6ba0b22a7eff5ec00cbb3
