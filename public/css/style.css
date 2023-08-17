@@ -20,7 +20,6 @@ h3 {
   font-size: medium;
 }
 
-
 h4,
 h5,
 h6 {
@@ -53,7 +52,7 @@ nav {
 .form-input {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: white;
-  color: black;;
+  color: black;
 }
 
 /* .btn-create {
@@ -63,11 +62,11 @@ nav {
   margin: 20px;
 } */
 
-button {
+/* button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: white;
   color: black;
-} 
+} */
 
 .question-list {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -81,12 +80,26 @@ button {
 
 .answer-input,
 #username-input-login,
+.username-input-login,
 #password-input-login,
+.password-input-login,
 #login-btn,
 #username-input-signup,
 #password-input-signup,
 #signup-btn,
-#btn-create {
+#btn-create,
+.btn-create,
+#tip-content,
+#topic {
   background-color: white;
+  color: black;
+}
+
+#rainbow {
+  background-color: white;
+  color: black;
+}
+
+#login-color {
   color: black;
 }
