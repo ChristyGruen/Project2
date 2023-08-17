@@ -2,10 +2,9 @@
 //(quizzes, questions, tips, sign up):
 const router = require("express").Router();
 const userRoutes = require("./userRoutes");
-//const projectRoutes = require("./projectRoutes");
+const questionRoutes = require("./questionRoutes");
 
-//router.use("/signup", userRoutes);
 router.use("/user", userRoutes);
-
+router.use("/question", questionRoutes);
 
 module.exports = router;

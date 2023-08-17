@@ -1,38 +1,69 @@
 const router = require("express").Router();
-const { Tipsquiz } = require("../../models");
-const withAuth = require("../../utils/auth");
+const { Question, Answer, User } = require("../../models");
+const { addNewAnswers } = require("../answer.controller");
+const { addNewQuestion } = require("../question.controller");
+//const withAuth = require("../../utils/auth");
 
-router.post("/", withAuth, async (req, res) => {
+// Question Post Route
+
+router.post("/", async (req, res) => {
+  console.log("HELP!!!!!");
+
   try {
-    const newTipsquiz = await Tipsquiz.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    // const newQuestion = await Question.create({
+    //   ...req.body,
+    //   userId: req.session.userId,
+    //   //userId: req.session?.userId || 1,
+    // });
 
-    res.status(200).json(newTipsquiz);
+    console.log(req.body);
+
+    await addNewAnswers(req.body, 1);
+
+    res.status(200).json({ status: "success" });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+router.post("/question", async (req, res) => {
+  // const questionData = await addNewQuestion(req.body)
+
   try {
-    const tipsquizData = await Tipsquiz.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
+    const questionData = await Question.Create({
+      include: [
+        {
+          model: User,
+          attributes: ["userName"],
+        },
+        { model: Question, attributes: ["content", "title"] },
+      ],
     });
 
-    if (!tipsquizData) {
-      res.status(404).json({ message: "No question found with this id!" });
-      return;
-    }
+    const newQuestion = questionData.get({ plain: true });
+    console.log(newQuestion);
 
-    res.status(200).json(tipsquizData);
+    res.render("homepage", { newQuestion });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+// router.post("/", withAuth, async (req, res) => {
+//   try {
+//     const newQuestion = await Question.create({
+//       ...req.body,
+//       // topic: req.session.topic,
+//       // content: req.session.content,
+//       // upVote: req.session.upVote,
+//       // downVote: req.session.downVote,
+//       userId: req.session.userId,
+//     });
+
+//     res.status(200).json(newQuestion);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;
