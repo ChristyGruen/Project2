@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const { Question, Answer, User } = require("../../models");
 const { addNewAnswers } = require("../answer.controller");
-const { addNewQuestion } = require("../question.controller");
+//const { addNewQuestion } = require("../question.controller");
 //const withAuth = require("../../utils/auth");
 
 // Question Post Route
 
 router.post("/", async (req, res) => {
   console.log("HELP!!!!!");
-
+  let userId;
   try {
     const newQuestion = await Question.create({
       ...req.body,
@@ -16,9 +16,9 @@ router.post("/", async (req, res) => {
       //userId: req.session?.userId || 1,
     });
 
-    console.log(req.body);
+    console.log(req.body, userId);
 
-    await addNewAnswers(req.body, 1);
+    await addNewAnswers(req.body, newQuestion.id);
 
     res.status(200).json({ status: "success" });
   } catch (err) {
@@ -38,6 +38,10 @@ router.post("/question", async (req, res) => {
           attributes: ["userName"],
         },
         { model: Question, attributes: ["content", "title"] },
+        {
+          model: Answer,
+          attributes: ["content"],
+        },
       ],
     });
 
