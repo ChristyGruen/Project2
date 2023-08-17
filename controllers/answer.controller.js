@@ -1,4 +1,4 @@
-const { Answer } = require("../../models");
+const { Answer } = require("../models");
 
 async function addNewAnswers(answers, idOfQuestion) {
   const arrOfAnswers = answers.map({ ...answers, questionId: idOfQuestion });
