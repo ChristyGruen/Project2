@@ -62,12 +62,12 @@ nav {
   margin: 20px;
 }
 
-.btn-create {
+/* .btn-create {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: white;
   color: black;
   margin: 20px;
-}
+} */
 
 .question-list {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -81,7 +81,14 @@ nav {
   width: 600px;
 }
 
-.answer-input {
+.answer-input,
+#username-input-login,
+#password-input-login,
+#login-btn,
+#username-input-signup,
+#password-input-signup,
+#signup-btn,
+#btn-create {
   background-color: white;
   color: black;
 }

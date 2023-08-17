@@ -8,18 +8,19 @@ const { addNewQuestion } = require("../question.controller");
 
 router.post("/", async (req, res) => {
   console.log("HELP!!!!!");
+
   try {
-    const newQuestion = await Question.create({
-      ...req.body,
-      userId: req.session?.userId || 1,
-    });
+    // const newQuestion = await Question.create({
+    //   ...req.body,
+    //   userId: req.session.userId,
+    //   //userId: req.session?.userId || 1,
+    // });
 
-    const populateAnswers = await addNewAnswers(
-      req.body.answers,
-      newQuestion.id
-    );
+    console.log(req.body);
 
-    res.status(200).json(newQuestion);
+    await addNewAnswers(req.body, 1);
+
+    res.status(200).json({ status: "success" });
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
