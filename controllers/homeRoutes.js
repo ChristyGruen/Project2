@@ -128,6 +128,7 @@ router.get("/question", withAuth, async (req, res) => {
 
     res.render("question", {
       questions,
+      username: questions[0].User.userName,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -135,9 +136,9 @@ router.get("/question", withAuth, async (req, res) => {
   }
 });
 
-
 ///////Tip Route/////////////////
-router.get("/tips", // withAuth,
+router.get(
+  "/tips", // withAuth,
   async (req, res) => {
     try {
       const tipData = await Tip.findAll({
@@ -149,9 +150,7 @@ router.get("/tips", // withAuth,
           },
         ],
       });
-      const tips = tipData.map((tip) =>
-        tip.get({ plain: true })
-      );
+      const tips = tipData.map((tip) => tip.get({ plain: true }));
       res.render("tips", {
         tips,
         // logged_in: req.session.logged_in,
@@ -161,6 +160,5 @@ router.get("/tips", // withAuth,
     }
   }
 );
-
 
 module.exports = router;
