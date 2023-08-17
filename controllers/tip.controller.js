@@ -13,4 +13,4 @@ async function addNewTip(data) {
   return tipData;
 }
 
-module.exports = { addNewQuestion };
+module.exports = { addNewTip };

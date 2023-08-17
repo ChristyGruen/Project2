@@ -37,7 +37,9 @@ const { addNewTip } = require("../tip.controller");
 
 router.post("/", // withAuth,
   async (req, res) => {
+    console.log("yoyo")
     try {
+
       const newTip = await Tip.create({
         ...req.body,
                     // should the second userid be user_id
