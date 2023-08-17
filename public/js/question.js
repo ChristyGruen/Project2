@@ -27,7 +27,18 @@ const newFormHandler = async (event) => {
   if (topic && content) {
     const response = await fetch(`/api/question`, {
       method: "POST",
-      body: JSON.stringify({ topic, content }),
+      body: JSON.stringify({
+        topic,
+        content,
+        answer1,
+        answer2,
+        answer3,
+        answer4,
+        answerInput1,
+        answerInput2,
+        answerInput3,
+        answerInput4,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
