@@ -26,7 +26,7 @@ if (topic && content) {
     method: "POST",
     body: JSON.stringify({
       topic,
-      content,
+      content
     }),
     headers: {
       "Content-Type": "application/json",
@@ -36,11 +36,10 @@ if (topic && content) {
   if (response.ok) {
     document.location.replace("/tips");
   } else {
-    alert("Failed to create project");
+    alert("Failed to create tip!");
   }
 }
 };
-
 
 document
 .querySelector('#tip-form')
