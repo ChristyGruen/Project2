@@ -2,9 +2,11 @@
   <div class="col-md-5">
     <h2>
       <a href="/question/{{question.id}}">`{{question.topic}}
-        <h3>{{question.content}}</h3>
+        <h3>Question:</h3> 
+        <p>{{question.content}}</p>
         <ul>
           {{#each question.answers as |answer|}}
+          <p>Possible answers:</p>
           <li>{{answer.content}}</li>
           {{/each}}
         </ul>
