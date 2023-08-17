@@ -58,27 +58,27 @@ router.get("/", async (req, res) => {
 //   }
 // });
 
-// // // get single Question
-// router.get("/question/:id", async (req, res) => {
-//   try {
-//     const questionData = await Question.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["userName"],
-//         },
-//         { model: Answer, attributes: ["content"] },
-//       ],
-//     });
+//get single Question Jackie is working on 8/17/23
+router.get("/question/:id", async (req, res) => {
+  try {
+    const questionData = await Question.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["userName"],
+        },
+        { model: Answer, attributes: ["content"] },
+      ],
+    });
 
-//     const oneQuestion = questionData.get({ plain: true });
-//     console.log(oneQuestion);
+    const oneQuestion = questionData.get({ plain: true });
+    console.log(oneQuestion);
 
-//     res.render("homepage", { oneQuestion });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.render("homepage", { oneQuestion });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
