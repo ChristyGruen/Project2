@@ -7,6 +7,7 @@ const tipRoutes = require("./tipRoutes");
 
 router.use("/signup", userRoutes);
 router.use("/question", questionRoutes);
+router.use("/tips", tipRoutes);
 //router.use('/projects', projectRoutes);
 
 module.exports = router;

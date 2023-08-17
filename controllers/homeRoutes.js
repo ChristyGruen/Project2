@@ -79,6 +79,13 @@ router.get("/question/:id", async (req, res) => {
   }
 });
 
+//////////test - Mike//////////////
+router.get("/tips", (req, res) =>
+console.log(newQuestion))
+///////////////////////////////////
+
+
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");

@@ -9,6 +9,7 @@ router.get("/", // withAuth,
         include: [
           {
             model: User,
+            // do we need to udpate all cases of userName to username
             attirbutes: ["userName"],
           },
         ],
@@ -28,12 +29,14 @@ router.get("/", // withAuth,
   }
 );
 
+
 router.post("/", // withAuth,
   async (req, res) => {
     try {
       const newTip = await Tip.create({
         ...req.body,
-        user_id: req.session.user_id,
+                    // should the second userid be user_id
+        userid: req.session?.userid || 1,
       });
 
       res.status(200).json(newTip);
@@ -41,6 +44,48 @@ router.post("/", // withAuth,
       res.status(400).json(err);
     }
   });
+
+
+//////////////taken from homepage single question get///////////////
+router.post("/tip/", async (req, res) => {
+  try {
+    const tipData = await Tip.Create({
+      include: [{
+        model: User,
+        attributes: ['userName'],
+      },
+      { model: Tip, attirbutes: ["topic", "content"]}
+    ],
+    });
+
+    const newTip = tipData.get({ plain: true });
+    console.log(newTip)
+
+    res.render('homepage', { newTip });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+////////////////////////////////////////////////////////////
+
+// router.post("/", // withAuth,
+//   async (req, res) => {
+//     try {
+//       const newTip = await Tip.create({
+//         ...req.body,
+//         user_id: req.session.user_id,
+//       });
+
+//       res.status(200).json(newTip);
+//     } catch (err) {
+//       res.status(400).json(err);
+//     }
+//   });
+
+
+
+
 
 router.delete("/:id", 
 // withAuth,
