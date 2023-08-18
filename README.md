@@ -41,6 +41,8 @@
   Samuel Levine  at <https://github.com/toxicmix>
 
   Henrich Michlitsch at <https://github.com/Henrichm77>
+
+  Help from University of Minnesota coding camp instructor Gary Almes and TAs Katy Vincent and Austin Slater.
       
   #### How to Contribute
       To contribute to the app: fork the repo on GitHub, then clone the project to your own machine.  Update the code, commit your changes to your own branch, then push your work to your fork on GitHub. Finally, submit a Pull request for review.
