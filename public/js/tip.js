@@ -1,8 +1,10 @@
 const tipFormHandler = async function (event) {
   event.preventDefault();
+  console.log('hello')
 
-  const topic = document.querySelector("#topic");
-  const content = document.querySelector("#tip-content");
+  const topic = document.querySelector("#topic").value;
+  // const title = document.querySelector('#title')
+  const content = document.querySelector("#tip-content").value;
 
 //   const response = await fetch('/api/tips', {
 //     method: "POST",
@@ -42,5 +44,6 @@ if (topic && content) {
 };
 
 document
-.querySelector('#tip-form')
-.addEventListener('submit', tipFormHandler);
+// .querySelector('#tip-form')
+.querySelector("#rainbow")
+.addEventListener('click', tipFormHandler);
