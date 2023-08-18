@@ -1,11 +1,7 @@
-var quizButton = document.getElementById('quizbutton')
-var answerButton = document.getElementById('check-answer')
-var quizEl = $('.card-div');
 
-function main(){
-	console.log('main start');
-}
-
+const quizButton = document.getElementById('quizbutton')
+const questionContainer = document.getElementById("question-container")
+const checkAnswerButton = document.getElementById("check-answer")
 
 function quickFetch(url){
   return fetch(url)
@@ -17,8 +13,7 @@ function quickFetch(url){
   })
 }
 
-function searchApi(difficulty) {
-	console.log('searchApi start')
+function createURL(difficulty){
 	var locQueryUrl = 'https://opentdb.com/api.php?amount=10&category=18';
 	//Check if diffuculty is specified
 	if (difficulty) {
@@ -27,100 +22,63 @@ function searchApi(difficulty) {
 	else{
 		locQueryUrl = 'https://opentdb.com/api.php?amount=10&category=18';
 	}
-	fetch(locQueryUrl)
-  	.then(function (response) {
-    	return response.json();
-  	})
-  	.then(function (data){
-
-			for (i = 0; i < 10; i++) {
-				if(data.results[i].type == 'multiple'){
-					var newCard = $(`
-					<div>
-						<div>
-							<div>${data.results[i].question}</div>
-							<div class="quiz-body">
-								<fieldset>
-									<label>Answers</label>
-									<input type="radio" name="answers"> ${data.results[i].incorrect_answers[0]}
-									<input type="radio" name="answers"> ${data.results[i].incorrect_answers[1]}
-									<input type="radio" name="answers"> ${data.results[i].incorrect_answers[2]}
-									<input type="radio" name="answers"> ${data.results[i].correct_answer}
-								</fieldset>
-	
-								<nav>
-									<button id = 'check-answer'>Check answer</button>
-								</nav>
-
-							</div>
-						</div>
-					</div>`)
-				}
-				else{
-					var newCard = $(`
-					<div>
-						<div>
-							<div>${data.results[i].question}</div>
-							<div class="quiz-body">
-								<fieldset>
-									<label>Answers</label>
-									<input type="radio" name="answers"> ${data.results[i].incorrect_answers[0]}
-									<input type="radio" name="answers"> ${data.results[i].correct_answer}
-								</fieldset>
-	
-							<nav>
-								<button id = 'check-answer'>Check answer</button>
-							</nav>
-
-							</div>
-						</div>
-					</div>`)
-				}
-				
-				quizEl.append(newCard);
-
-
-			}
-
-			if (!data.results.length) {
-				console.log('No results found!');
-			} 
-			else{
-				console.log(data.results)
-			}
-		})
-
-		
-
-
-	.catch(function (err) {
-		console.error(err);
-	});
+	return locQueryUrl
 }
 
 
-answerButton.addEventListener('click',function(){
-	if(1<0){
-		console.log('data is accesible')
-	}
-	else{console.log('data hidden')}
-
-
-
-
-})
+function generateQuiz(locQueryUrl){
+	quickFetch(locQueryUrl)
+	.then(function(data){
+		data.results.forEach((q, index) => {
+			const questionEl = document.createElement("div")
+			const choices = [...q.incorrect_answers,q.correct_answer]
+			questionEl.innerHTML = `
+				<p>${index+1}. ${q.question}</p>
+				${choices.map(choice => `
+					<label>
+						<input type="radio" name="question-${index}" value="${choice}">${choice}
+					</label>
+				`).join("")}
+			`;
+			questionContainer.appendChild(questionEl)
+		});
+	
+	
+		checkAnswerButton.addEventListener("click", () => {
+			const selectedAnswers = [];
+			data.results.forEach((q, index) => {
+				const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+				if (selectedOption) {
+					selectedAnswers.push({ question: q.question, answer: selectedOption.value });
+				}
+			});
+		
+			// Check answers
+			let score = 0;
+			selectedAnswers.forEach(selected => {
+				const question = data.results.find(q => q.question === selected.question);
+				if (question.correct_answer == selected.answer) {
+					score++;
+				}
+			});
+			scoreDisplay = document.getElementById('score-display')
+			scoreDisplay.textContent = `Score: ${score}/10`;
+	
+		});
+	})
+}
 
 
 quizButton.addEventListener("click",function(){
-
 	var ele = document.getElementsByName('difficulty');
+	var difficulty;
+	console.log('event listener')
 	for (i = 0; i < ele.length; i++) {
-		if (ele[i].checked)
+		if (ele[i].checked){
 			document.getElementById("result").innerHTML = "Difficulty: " + ele[i].value;
-			var difficulty = ele[i].value;
+			difficulty = ele[i].value;
 		}
-	console.log(difficulty)
-	searchApi(difficulty)
+	}
+	locQueryUrl = createURL(difficulty)
+	generateQuiz(locQueryUrl)
 })
-
-main()
