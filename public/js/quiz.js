@@ -1,4 +1,4 @@
-
+const reloadButton = document.getElementById("reload-button");
 const quizButton = document.getElementById('quizbutton')
 const questionContainer = document.getElementById("question-container")
 const checkAnswerButton = document.getElementById("check-answer")
@@ -70,15 +70,20 @@ function generateQuiz(locQueryUrl){
 
 
 quizButton.addEventListener("click",function(){
-	var ele = document.getElementsByName('difficulty');
+	var element = document.getElementsByName('difficulty');
 	var difficulty;
 	console.log('event listener')
-	for (i = 0; i < ele.length; i++) {
-		if (ele[i].checked){
-			document.getElementById("result").innerHTML = "Difficulty: " + ele[i].value;
-			difficulty = ele[i].value;
+	for (i = 0; i < element.length; i++) {
+		if (element[i].checked){
+			document.getElementById("result").innerHTML = "Difficulty: " + element[i].value;
+			difficulty = element[i].value;
 		}
 	}
 	locQueryUrl = createURL(difficulty)
 	generateQuiz(locQueryUrl)
 })
+
+
+
+reloadButton.addEventListener("click", () => {
+location.reload();})
